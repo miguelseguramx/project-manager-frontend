@@ -1,28 +1,52 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Task from './Task';
+import ProjectContext from '../../context/projects/projectContext';
+import TaskContext from '../../context/task/taskContext';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const TaskList = () => {
 
-  const tasks = [
-    {name: 'MERN task', id:23 ,state: true},
-    {name: 'Pomodoro', id:24 ,state: false},
-    {name: 'Ciiar', id:29 ,state: true},
-  ]
+  // Project state
+  const projectsContext = useContext(ProjectContext)
+  const { project, deleteProject } = projectsContext
+  
+  // Task from the project
+  const tasksContext = useContext(TaskContext)
+  const { projecttasks } = tasksContext
+  const tasks = projecttasks
+
+  if (!project){
+    return <h2>Selecciona un proyecto</h2>
+  } 
+
+  // Array destructuring
+  // project = [{id: 1, name: '234'}]
+  const [ actualProject ] = project // project[0].id
 
   return (
     <>
-      <h2>Project: Pomodoro</h2>
+      <h2>Project: {actualProject.name}</h2>
       <ul className="listado-tareas">
         {tasks.length === 0 
           ? (<li className="tarea">There's not task</li>)
-          : tasks.map(task => (
-            <Task task={task} key={task.id}/>
-          ))
+          : ( 
+          <TransitionGroup>
+            {tasks.map(task => (
+              <CSSTransition
+                key={task.id}
+                timeout={200}
+                classNames="tarea"
+              >
+                <Task task={task} />
+              </CSSTransition>
+            ))}
+          </TransitionGroup>)
         }
       </ul>
       <button 
         type="button"
         className="btn btn-eliminar"
+        onClick={() => deleteProject(actualProject.id)}
       >Eliminar proyecto &times;</button>
     </>
   );

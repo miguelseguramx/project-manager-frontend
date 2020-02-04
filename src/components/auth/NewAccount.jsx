@@ -1,4 +1,4 @@
-import React, { setState, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const NewAccount = () => {
@@ -31,10 +31,10 @@ const NewAccount = () => {
       <div className="contenedor-form sombra-dark">
         <h1>Register</h1>
         <form action="" onSubmit={onSubmit}>
-        <div className="campo-form">
+          <div className="campo-form">
             <label htmlFor="name">Name</label>
             <input
-              type="name"
+              type="text"
               id="name"
               name="name"
               value={name}
