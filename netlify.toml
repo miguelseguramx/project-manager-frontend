@@ -1,0 +1,2 @@
+[build.environment]
+  REACT_APP_BACKEND_UR = "https://project-manager-miguelseguramx.herokuapp.com"
