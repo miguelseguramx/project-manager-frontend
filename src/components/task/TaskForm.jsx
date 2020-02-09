@@ -16,7 +16,7 @@ const TaskForm = () => {
 
   // Task state
   const tasksContext =  useContext(TaskContext)
-  const { taskerror, addTask, actualtask, validateTask, getTasks, editTask } = tasksContext
+  const { actualtask, taskerror, addTask, validateTask, getTasks,  editTask } = tasksContext
 
   // Effect to detect if you want to edit a task 
   useEffect(() => {
@@ -27,7 +27,7 @@ const TaskForm = () => {
     setNewTask({
       name: ''
     })
-  }, [actualtask])
+  }, [actualtask])//eslint-disable-line
 
   if (!project){
     return null
@@ -48,19 +48,14 @@ const TaskForm = () => {
 
     if(actualtask === null){
       // Add new task to the state
-      newTask.projectId = actualProject.id
-      newTask.state = false
+      newTask.project = actualProject._id
       addTask(newTask)
     } else {
       // Edit actual task
       editTask(newTask)
     }
-
-    
-
     // Get, filter and set the task of the project
-    getTasks(actualProject.id);
-
+    getTasks(actualProject._id);
     // Reset form
     setNewTask({
       name: '',

@@ -14,7 +14,7 @@ const TaskList = () => {
   const tasksContext = useContext(TaskContext)
   const { projecttasks } = tasksContext
   const tasks = projecttasks
-
+  
   if (!project){
     return <h2>Selecciona un proyecto</h2>
   } 
@@ -33,11 +33,11 @@ const TaskList = () => {
           <TransitionGroup>
             {tasks.map(task => (
               <CSSTransition
-                key={task.id}
+                key={task._id}
                 timeout={200}
                 classNames="tarea"
               >
-                <Task task={task} />
+                <Task task={task} key={task._id} />
               </CSSTransition>
             ))}
           </TransitionGroup>)
@@ -46,7 +46,7 @@ const TaskList = () => {
       <button 
         type="button"
         className="btn btn-eliminar"
-        onClick={() => deleteProject(actualProject.id)}
+        onClick={() => deleteProject(actualProject._id)}
       >Eliminar proyecto &times;</button>
     </>
   );

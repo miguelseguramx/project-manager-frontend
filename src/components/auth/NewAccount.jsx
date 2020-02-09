@@ -1,8 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import AlertContext from '../../context/alerts/alertContext';
+import AuthContext from '../../context/auth/authContext';
 
-const NewAccount = () => {
+const NewAccount = props => {
 
+  // Extract the values from the context 
+  const alertContext = useContext(AlertContext)
+  const { alert, showAlert } = alertContext;
+
+  const authContext = useContext(AuthContext)
+  const {auth, message, userRegister } = authContext
+
+  // If the user is already registered or can take out
+  useEffect(() => {
+    if(auth){
+      props.history.push('/projects')
+    }
+    if(message){
+      showAlert(message.msg, message.category)
+    }
+  }, [message, auth, props.history ]) //eslint-disable-line
+
+  // State to save user
   const [ user, setUser ] = useState({
     name: '',
     email: '',
@@ -23,11 +43,39 @@ const NewAccount = () => {
     e.preventDefault()
 
     // Validate the form, the password, and confirm password
+    if(name.trim() === '' || 
+      email.trim() === '' || 
+      password.trim() === '' || 
+      confirmPassword.trim() === ''){
+      showAlert('All fields are required', 'alerta-error')
+      return
+    }
+    
+    if(password.length < 8){
+      showAlert('The password must be at least 8 characters', 'alerta-error')
+      return
+    }
 
+    if(password !== confirmPassword){
+      showAlert('Passwords are not the same', 'alerta-error')
+      return
+    }
+    
+    userRegister({
+      name, email, password
+    })
+    
   }
 
   return (
     <div className="form-usuario">
+      { 
+        alert ? (
+          <div className={`alerta ${alert.category}`}>
+            {alert.msg}
+          </div>
+        ) : null
+      }
       <div className="contenedor-form sombra-dark">
         <h1>Register</h1>
         <form action="" onSubmit={onSubmit}>
@@ -68,8 +116,8 @@ const NewAccount = () => {
             <label htmlFor="password">Confirm Password</label>
             <input
               type="password"
-              id="password"
-              name="password"
+              id="confirmPassword"
+              name="confirmPassword"
               placeholder="*******"
               value={confirmPassword}
               onChange={onChange}
@@ -77,7 +125,7 @@ const NewAccount = () => {
           </div>
           <div className="campo-form">
             <input
-              type="button"
+              type="submit"
               className="btn btn-primario btn-block"
               value="Register"
             />

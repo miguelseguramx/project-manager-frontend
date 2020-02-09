@@ -1,7 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import AlertContext from '../../context/alerts/alertContext';
+import AuthContext from '../../context/auth/authContext';
 
-const Login = () => {
+const Login = props => {
+  // Extract the values from the context 
+  const alertContext = useContext(AlertContext)
+  const { alert, showAlert } = alertContext
+
+  const authContext = useContext(AuthContext)
+  const {auth, message, loginFunction } = authContext
+
+  // If the user islready registered or can take out
+  useEffect(() => {
+    if(auth){
+      props.history.push('/projects')
+    }
+    if(message){
+      showAlert(message.msg, message.category)
+    }
+  }, [message, auth, props.history]) //eslint-disable-line
 
   // State to login
   const [ user, setUser ] = useState({
@@ -21,12 +39,24 @@ const Login = () => {
   const onSubmit = e => {
     e.preventDefault()
 
-    // Validate the form
+    // Validate the email and the password
+    if(email.trim() === '' || password.trim() === '' ){
+      showAlert('All fields are required', 'alerta-error')
+      return
+    }
 
+    loginFunction({ email, password })
   }
 
   return (
     <div className="form-usuario">
+      { 
+        alert ? (
+          <div className={`alerta ${alert.category}`}>
+            {alert.msg}
+          </div>
+        ) : null
+      }
       <div className="contenedor-form sombra-dark">
         <h1>Log in</h1>
         <form action="" onSubmit={onSubmit}>
@@ -54,7 +84,7 @@ const Login = () => {
           </div>
           <div className="campo-form">
             <input
-              type="button"
+              type="submit"
               className="btn btn-primario btn-block"
               value="Login"
             />
