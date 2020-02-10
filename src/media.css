@@ -1,0 +1,58 @@
+@media (min-width: 768px) {
+  h1{
+    margin-bottom: 4rem;
+  }
+  .new-project-form {
+    margin-top: 6rem;
+  }
+  .contenedor-app {
+      display: flex;
+      min-height: 100vh;
+  }
+  .projects {
+    margin-top: 5rem;
+  }
+  aside {
+    flex: 0 0 300px;
+    position: initial;
+    top: 0px;
+  }
+  .principal-section {
+    flex: 1;
+    position: relative;
+    top: 0px;
+  }
+  .principal-section main{
+    position: relative;
+    top: var(--header-desktop)
+  }
+  .app-header {
+    max-width: 76.9vw;
+    min-width: 60vw;
+    position: fixed;
+    top: 0px;
+    padding: 3rem;
+  }
+  .form-usuario {
+    height: 100vh;
+  }
+  .form-camp {
+    flex-direction: row;
+  }
+  .form-camp label {
+    flex: 0 0 100px;
+  }
+  .alert {
+    width: auto;
+    border-radius: 1rem;
+    top: 30px;
+    right: 10px;
+    left: auto;
+  }
+  .form{
+    padding: 4rem;
+  }
+  .task-container {
+    padding: 4rem;
+  }
+}

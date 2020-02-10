@@ -41,7 +41,7 @@ const Login = props => {
 
     // Validate the email and the password
     if(email.trim() === '' || password.trim() === '' ){
-      showAlert('All fields are required', 'alerta-error')
+      showAlert('All fields are required', 'alert-error')
       return
     }
 
@@ -52,15 +52,15 @@ const Login = props => {
     <div className="form-usuario">
       { 
         alert ? (
-          <div className={`alerta ${alert.category}`}>
+          <div className={`alert ${alert.category}`}>
             {alert.msg}
           </div>
         ) : null
       }
-      <div className="contenedor-form sombra-dark">
+      <div className="form-container shadow-dark">
         <h1>Log in</h1>
         <form action="" onSubmit={onSubmit}>
-          <div className="campo-form">
+          <div className="form-camp">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -71,7 +71,7 @@ const Login = props => {
               onChange={onChange}
             />
           </div>
-          <div className="campo-form">
+          <div className="form-camp">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -82,15 +82,15 @@ const Login = props => {
               onChange={onChange}
             />
           </div>
-          <div className="campo-form">
+          <div className="form-camp">
             <input
               type="submit"
-              className="btn btn-primario btn-block"
+              className="btn btn-primary btn-block"
               value="Login"
             />
           </div>
         </form>
-        <Link to={'/new-account'} className="enlace-cuenta">
+        <Link to={'/new-account'} className="link-account">
           You don't have an account? Register
         </Link> 
       </div>

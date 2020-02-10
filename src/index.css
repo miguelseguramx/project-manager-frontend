@@ -6,6 +6,8 @@
   --negro: #000000;
   --headingFont:'Raleway', sans-serif;
   --textFont:  'Roboto', sans-serif;
+  --header-mobile: 65px;
+  --header-desktop: 85px;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -23,11 +25,10 @@ body {
   font-family: var(--textFont);
 }
 
-
 h1, h2 {
   font-family: var(--headingFont);
   font-weight: 900;
-  margin: 0 0 4rem 0;
+  margin: 0 0 2rem 0;
   text-align: center;
   color: var(--gris2);
 }
@@ -65,14 +66,14 @@ a {
 .btn:hover {
   cursor: pointer;
 }
-.btn-primario {
+.btn-primary {
   background-color: var(--gris2);
   color: var(--blanco);
 }
-.btn-primario:hover {
+.btn-primary:hover {
   background: var(--gris3);
 }
-.btn-secundario {
+.btn-secondary {
   background-color: var(--gris1);
 }
 .btn-block {
@@ -88,90 +89,88 @@ a {
   display: block;
   background-color: transparent;
 }
-.btn-eliminar{
+.btn-delete{
   background-color: rgba(251, 99, 99, 0.781);
+  padding: 1rem;
+  font-size: 1.7rem;
 }
-
-@media (min-width: 768px) {
-  .contenedor-app {
-      display: flex;
-      min-height: 100vh;
-  }
-
-  aside {
-      background-color: var(--blanco);
-      flex: 0 0 300px;
-  }
-  .seccion-principal {
-      flex: 1;
-  }
-
-}
-
-
 /* BARRA LATERAL */
 aside  {
   padding: 3rem;
+  width: 100%;
+  position: relative;
+  background-color: var(--blanco);
+  top: var(--header-mobile);
 }
 
-.formulario-nuevo-proyecto {
-  margin-top: 6rem;
+.principal-section{
+  position: relative;
+  top: var(--header-mobile);
+} 
+
+.new-project-form {
+  margin-top: 2rem;
 }
-.formulario-nuevo-proyecto .input-text {
+.new-project-form .input-text {
   border-bottom: 1px solid var(--gris2);
   border-radius: 0;
   background-color: var(--gris1);
 }
-.formulario-nuevo-proyecto .input-text::placeholder{
+.new-project-form .input-text::placeholder{
   color: var(--gris2);
 }
-.proyectos {
-  margin-top: 10rem;
+.projects {
+  margin-top: 3rem;
 }
-.listado-proyectos li {
+.project-list li {
   margin-bottom: 2rem;
 }
-.listado-proyectos li a {
+.project-list li a {
   font-size: 1.4rem;
   color: var(--gris2);
   line-height: 1.5;
   font-weight: 300;
 }
 .app-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--gris2);
-  padding: 4rem;
+  padding: 2rem;
 }
-.nombre-usuario {
+
+.user-name {
   color: var(--blanco);
   font-size: 2.2rem;
   margin: 0;
 }
-.nombre-usuario span {
+.user-name span {
   font-weight: 900;
 }
-.nav-principal a {
+.principal-nav a {
   color: var(--blanco);
   text-decoration: none;
 }
-.nav-principal a:first-of-type {
+.principal-nav a:first-of-type {
   margin-right: 2rem;
 }
 
-/** Formulario crear y editar tareas **/
-.formulario {
+/** Form to create and edit task **/
+.form {
   background-color: var(--gris3);
-  padding: 4rem;
+  padding: 4rem 3rem;
 }
-.formulario form {
+.form form {
   max-width: 600px;
   margin: 0 auto;
 }
-.contenedor-input {
+.input-container {
   display: flex;
 }
-.contenedor-input label {
+.input-container label {
   margin-bottom: 1rem;
   color: var(--blanco);
 }
@@ -184,18 +183,16 @@ aside  {
 }
 
 /** TAREAS LISTADO **/
-.contenedor-tareas {
-  padding: 4rem;
+.task-container {
+  padding: 4rem 3rem;
 }
 
-
-
-.listado-tareas {
+.task-list {
   max-width: 600px;
   margin: 0 auto;
 }
 
-.tarea {
+.task {
   display: flex;
   justify-content: space-between;
   background-color: var(--blanco);
@@ -205,36 +202,36 @@ aside  {
   border-radius: .5rem;
 
 }
-.sombra {
+.shadow {
   -webkit-box-shadow: 0px 4px 10px -3px rgba(117,117,117,1);
   -moz-box-shadow: 0px 4px 10px -3px rgba(117,117,117,1);
   box-shadow: 0px 4px 10px -3px rgba(117,117,117,1);
 }
-.sombra-dark {
+.shadow-dark {
   -webkit-box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
   -moz-box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
   box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
 }
-.tarea .acciones .btn:first-of-type {
+.task .actions .btn:first-of-type {
   margin-right: 1rem;
 }
-.tarea p {
+.task p {
   font-size: 1.6rem;
   flex: 1;
   padding-right: 2rem;
 }
-.tarea .btn {
+.task .btn {
   padding: .8rem;
   font-size:1.4rem;
   border-radius: 0;
   margin: 0;
 }
 
-.estado {
+.state {
   margin-right: 1rem;
 }
-.estado button, 
-.mensaje {
+.state button, 
+.message {
   font-weight: 900;
   font-family: var(--textFont);
   font-size: 1rem;
@@ -243,20 +240,20 @@ aside  {
   cursor: pointer;
   border: none;
 }
-.mensaje {
+.message {
   text-align: center;
   font-size: 1.6rem;
   border-radius: 0;
 }
-.mensaje:hover {
+.message:hover {
   cursor: default;
 }
-.completo,
+.completed,
 .correcto {
   background-color: rgba(71, 255, 71, 0.527);
   color: var(--gris3);
 }
-.incompleto{
+.incompleted{
   background-color: rgba(251, 99, 99, 0.781);
   color: var(--gris3);
 }
@@ -267,37 +264,36 @@ aside  {
   color: var(--blanco);
 }
 
-
-
-.tarea-enter,
+.task-enter,
 .proyecto-enter {
   opacity: 0;
 }
-.tarea-enter-active,
+.task-enter-active,
 .proyecto-enter-active {
   opacity: 1;
   transition: opacity 200ms;
 }
-.tarea-exit,
+.task-exit,
 .proyecto-exit {
   opacity: 1;
 }
-.tarea-exit-active,
+.task-exit-active,
 .proyecto-exit-active {
   opacity: 0;
   transition: opacity 200ms;
 }
 
 .form-usuario {
-    background-color: var(--gris2);
-    height: 100vh;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: auto;
+  padding: 25px 15px;
+  background-color: var(--gris2);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.contenedor-form {
+.form-container {
     padding: 5rem 3rem;
     max-width: 500px;
     width: 95%;
@@ -305,33 +301,35 @@ aside  {
     border-radius: 1rem;
 }
 
-.campo-form {
+.form-camp {
     display: flex;
+    flex-direction: column;
     margin-bottom: 2rem;
-    align-items: center;
+    align-items: flex-start;
 }
-.campo-form:last-of-type {
+.form-camp:last-of-type {
   margin: 0;
 }
-.campo-form label {
-  flex: 0 0 100px;
+.form-camp label {
+  margin-bottom: 1rem;
   font-family: var(--textFont);
 }
-.campo-form input[type="password"],
-.campo-form input[type="email"], 
-.campo-form input[type="text"] {
+.form-camp input[type="password"],
+.form-camp input[type="email"], 
+.form-camp input[type="text"] {
   border: 1px solid #e1e1e1;
   padding: 1rem;
   flex: 1;
+  width: 100%;
 }
 
-.enlace-cuenta {
+.link-account {
   margin-top: 2rem;
   display: block;
   opacity: .7;
 }
 
-.alerta {
+.alert {
   position: fixed;
   top: 0;
   left: 0;
@@ -344,26 +342,25 @@ aside  {
   width: 100%;
 }
 
-@media (min-width:768px) {
-  .alerta {
-      width: auto;
-      border-radius: 1rem;
-      top: 30px;
-      right: 10px;
-      left: auto;
-  }
-}
-
-.alerta-ok {
+.alert-ok {
   background-color: rgb(109, 211, 109);
   color: rgb(2, 103, 2);
 }
-.alerta-error {
+.alert-error {
   background-color: rgb(230, 78, 78);
   color: var(--blanco);
 }
 
-.cerrar-sesion {
+.logout {
   color: var(--blanco);
   outline: none;
+}
+
+details {
+  position: relative;
+  top: 100px;
+}
+
+summary {
+  padding: 2rem;
 }

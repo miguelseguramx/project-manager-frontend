@@ -40,7 +40,7 @@ const NewProject = () => {
       { form ? 
         (
           <form
-            className="formulario-nuevo-proyecto"
+            className="new-project-form"
             onSubmit={onSubmit} >
             <input
               type="text"
@@ -52,7 +52,7 @@ const NewProject = () => {
             />
             <input
               type="submit"
-              className="btn btn-block btn-primario"
+              className="btn btn-block btn-primary"
               value="Add project"
             />
           </form>
@@ -60,7 +60,7 @@ const NewProject = () => {
         :
         (
           <button
-            className="btn btn-block btn-primario"
+            className="btn btn-block btn-primary"
             onClick={() => showForm()}
           >
             New project
@@ -68,7 +68,7 @@ const NewProject = () => {
         )
       }
       
-      { errorform ? <p className="mensaje error">The name of the project is mandatory</p> : null }
+      { errorform ? <p className="message error">The name of the project is mandatory</p> : null }
     </Fragment>
   );
 };

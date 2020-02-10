@@ -70,9 +70,9 @@ const TaskForm = () => {
   }
 
   return (
-    <div className="formulario">
+    <div className="form">
       <form onSubmit={handleSubmit}>
-        <div className="contenedor-input">
+        <div className="input-container">
           <input
             type="text"
             className="input-text"
@@ -82,16 +82,16 @@ const TaskForm = () => {
             onChange={handleChange}/>
         </div>
 
-        <div className="contenedor-input">
+        <div className="input-container">
           <input
             type="submit"
-            className="btn btn-primario btn-submit btn-block"
+            className="btn btn-primary btn-submit btn-block"
             value={actualtask ? 'Edit task' : 'Add task'}
           />
         </div>
       </form>
      
-      { taskerror ? <p className="mensaje error">The name is mandatory</p>: null}
+      { taskerror ? <p className="message error">The name is mandatory</p>: null}
     </div>
   );
 };

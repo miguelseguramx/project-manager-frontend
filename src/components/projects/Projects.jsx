@@ -19,11 +19,11 @@ const Projects = () => {
   return (
     <div className="contenedor-app">
       <Sidebar />
-      <div className="seccion-principal">
+      <div className="principal-section">
         <TopBar />
         <main>
           <TaskForm />
-          <div className="contenedor-tareas">
+          <div className="task-container">
             <TaskList />
           </div>
         </main>

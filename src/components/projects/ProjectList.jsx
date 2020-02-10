@@ -26,10 +26,10 @@ const ProjectList = () => {
   if(projects.lenght === 0) return <p>No projects, start by creating one</p>
   
   return (
-    <ul className="listado-proyectos">
+    <ul className="project-list">
        { 
         alert ? (
-          <div className={`alerta ${alert.category}`}>
+          <div className={`alert ${alert.category}`}>
             {alert.msg}
           </div>
         ) : null

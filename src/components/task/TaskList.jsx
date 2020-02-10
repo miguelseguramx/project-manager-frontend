@@ -16,7 +16,7 @@ const TaskList = () => {
   const tasks = projecttasks
   
   if (!project){
-    return <h2>Selecciona un proyecto</h2>
+    return <h2>Select a project</h2>
   } 
 
   // Array destructuring
@@ -26,16 +26,16 @@ const TaskList = () => {
   return (
     <>
       <h2>Project: {actualProject.name}</h2>
-      <ul className="listado-tareas">
+      <ul className="task-list">
         {tasks.length === 0 
-          ? (<li className="tarea">There's not task</li>)
+          ? (<li className="task">There's not task</li>)
           : ( 
           <TransitionGroup>
             {tasks.map(task => (
               <CSSTransition
                 key={task._id}
                 timeout={200}
-                classNames="tarea"
+                classNames="task"
               >
                 <Task task={task} key={task._id} />
               </CSSTransition>
@@ -45,9 +45,9 @@ const TaskList = () => {
       </ul>
       <button 
         type="button"
-        className="btn btn-eliminar"
+        className="btn btn-delete"
         onClick={() => deleteProject(actualProject._id)}
-      >Eliminar proyecto &times;</button>
+      >Delete project</button>
     </>
   );
 };

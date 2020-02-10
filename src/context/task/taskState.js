@@ -19,7 +19,7 @@ const TaskState = props => {
     actualtask: null,
   }
   
-  // Dispacth para ejecutar las acciones
+  // Dispacth para ejecutar las actions
   const [state, dispatch] = useReducer(TaskReducer, initialState)
 
   // Actions
@@ -27,17 +27,17 @@ const TaskState = props => {
   const getTasks = async project => {
     try {
       const response = await axiosClient.get('/api/tasks', { params: { project } })
-      console.log(response);
+      // console.log(response);
       
       dispatch({
         type: GET_TASKS,
         payload: response.data.tasks,
       })
     } catch (error) {
-      console.log(error.response);
+      // console.log(error.response);
       const alert = {
         msg: 'There was a mistake',
-        category: 'alerta-error',
+        category: 'alert-error',
       }
       dispatch({
         type: TASK_ERROR,
@@ -48,20 +48,20 @@ const TaskState = props => {
   }
 
   const addTask = async task =>{
-    console.log(task)
+    // console.log(task)
     try {
       const response = await axiosClient.post('/api/tasks', task) 
-      console.log(response)
+      // console.log(response)
       dispatch({
         type: ADD_TASK,
         payload: response.data.task
       })
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       
       const alert = {
         msg: 'There was a mistake',
-        category: 'alerta-error',
+        category: 'alert-error',
       }
       dispatch({
         type: TASK_ERROR,
@@ -87,7 +87,7 @@ const TaskState = props => {
     } catch (error) {
       const alert = {
         msg: 'There was a mistake',
-        category: 'alerta-error',
+        category: 'alert-error',
       }
       dispatch({
         type: TASK_ERROR,
@@ -100,7 +100,7 @@ const TaskState = props => {
   const editTask = async task => {
     try {
       const response = await axiosClient.put(`/api/tasks/${task._id}`, task)
-      console.log(response);
+      // console.log(response);
       
       dispatch({
         type: EDIT_TASK,
@@ -109,7 +109,7 @@ const TaskState = props => {
     } catch (error) {
       const alert = {
         msg: 'There was a mistake',
-        category: 'alerta-error',
+        category: 'alert-error',
       }
       dispatch({
         type: TASK_ERROR,

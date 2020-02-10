@@ -38,9 +38,10 @@ const AuthState = props => {
       // Get the user 
       userRegistered()
     } catch (error) {
+      // console.log(error.response);
       const alert = {
         msg: error.response.data.msg,
-        category: 'alerta-error'
+        category: 'alert-error'
       }
       dispatch({
         type: REGISTER_ERROR,
@@ -65,7 +66,7 @@ const AuthState = props => {
     } catch (error) {
       const alert = {
         msg: error.response.data.msg,
-        category: 'alerta-error'
+        category: 'alert-error'
       }
       dispatch({
         type: LOGIN_ERROR,
@@ -86,9 +87,10 @@ const AuthState = props => {
       // Get the user 
       userRegistered()
     } catch (error) {
+      // console.log(error.response);
       const alert = {
         msg: error.response.data.msg,
-        category: 'alerta-error'
+        category: 'alert-error'
       }
       dispatch({
         type: LOGIN_ERROR,

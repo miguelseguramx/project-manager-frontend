@@ -32,39 +32,39 @@ const Task = ({ task }) => {
   }
 
   return (
-    <li className="tarea sombra">
+    <li className="task shadow">
       <p>{task.name}</p>
-      <div className="estado">
+      <div className="state">
         {task.state 
         ? 
           (
             <button
               type="button"
-              className="completo"
+              className="completed"
               onClick={() => handleTaskChange(task)}
-            >Completo</button>
+            >Completed</button>
           )
         :
           (
             <button
               type="button"
-              className="incompleto"
+              className="incompleted"
               onClick={() => handleTaskChange(task)}
-            >Incompleto</button>
+            >Incomplete</button>
           )
         }
         </div>
-        <div className="acciones">
+        <div className="actions">
           <button
             type="button"
-            className="btn btn-primario"
+            className="btn btn-primary"
             onClick={() => handleTaskEdit(task)}
-          >Editar</button>
+          >Edit</button>
           <button
             type="button"
-            className="btn btn-secundario"
+            className="btn btn-secondary"
             onClick={() => handleDelete(task._id)}
-          >Eliminar</button>
+          >Delete</button>
         </div>
     </li>
   );

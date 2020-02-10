@@ -26,7 +26,7 @@ const ProjectState = props => {
   //   { name: 'Ciiar', id: 3},
   // ]
 
-  // Dispacth para ejecutar las acciones
+  // Dispacth para ejecutar las actions
   const [ state, dispatch ] = useReducer(projectReducer, initialState)
 
   // Serie de funciones para el crud or actions on REDUX
@@ -47,7 +47,7 @@ const ProjectState = props => {
     } catch (error) {
       const alert = {
         msg: 'There was a mistake',
-        category: 'alerta-error',
+        category: 'alert-error',
       }
       dispatch({
         type: PROJECT_ERROR,
@@ -69,7 +69,7 @@ const ProjectState = props => {
     } catch (error) {
       const alert = {
         msg: 'There was a mistake',
-        category: 'alerta-error',
+        category: 'alert-error',
       }
       dispatch({
         type: PROJECT_ERROR,
@@ -105,7 +105,7 @@ const ProjectState = props => {
     } catch (error) {
       const alert = {
         msg: 'There was a mistake',
-        category: 'alerta-error',
+        category: 'alert-error',
       }
       dispatch({
         type: PROJECT_ERROR,

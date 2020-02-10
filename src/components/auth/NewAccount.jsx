@@ -47,17 +47,17 @@ const NewAccount = props => {
       email.trim() === '' || 
       password.trim() === '' || 
       confirmPassword.trim() === ''){
-      showAlert('All fields are required', 'alerta-error')
+      showAlert('All fields are required', 'alert-error')
       return
     }
     
     if(password.length < 8){
-      showAlert('The password must be at least 8 characters', 'alerta-error')
+      showAlert('The password must be at least 8 characters', 'alert-error')
       return
     }
 
     if(password !== confirmPassword){
-      showAlert('Passwords are not the same', 'alerta-error')
+      showAlert('Passwords are not the same', 'alert-error')
       return
     }
     
@@ -71,15 +71,15 @@ const NewAccount = props => {
     <div className="form-usuario">
       { 
         alert ? (
-          <div className={`alerta ${alert.category}`}>
+          <div className={`alert ${alert.category}`}>
             {alert.msg}
           </div>
         ) : null
       }
-      <div className="contenedor-form sombra-dark">
+      <div className="form-container shadow-dark">
         <h1>Register</h1>
         <form action="" onSubmit={onSubmit}>
-          <div className="campo-form">
+          <div className="form-camp">
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -90,7 +90,7 @@ const NewAccount = props => {
               onChange={onChange}
             />
           </div>
-          <div className="campo-form">
+          <div className="form-camp">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -101,7 +101,7 @@ const NewAccount = props => {
               onChange={onChange}
             />
           </div>
-          <div className="campo-form">
+          <div className="form-camp">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -112,7 +112,7 @@ const NewAccount = props => {
               onChange={onChange}
             />
           </div>
-          <div className="campo-form">
+          <div className="form-camp">
             <label htmlFor="password">Confirm Password</label>
             <input
               type="password"
@@ -123,15 +123,15 @@ const NewAccount = props => {
               onChange={onChange}
             />
           </div>
-          <div className="campo-form">
+          <div className="form-camp">
             <input
               type="submit"
-              className="btn btn-primario btn-block"
+              className="btn btn-primary btn-block"
               value="Register"
             />
           </div>
         </form>
-        <Link to={'/'} className="enlace-cuenta">
+        <Link to={'/'} className="link-account">
           Login
         </Link> 
       </div>

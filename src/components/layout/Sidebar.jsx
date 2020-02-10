@@ -4,11 +4,11 @@ import ProjectList from '../projects/ProjectList';
 
 const Sidebar = () => {
   return (
-    <aside>
+    <aside aria-labelledby="dropdownMenuButton">
       <h1>MERN<span>Tasks</span></h1>
       <NewProject />
-      <div className="proyectos">
-        <h2>Tus proyectos</h2>
+      <div className="projects">
+        <h2>Your projects</h2>
         <ProjectList />
       </div>
     </aside>

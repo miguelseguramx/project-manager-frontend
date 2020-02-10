@@ -13,10 +13,10 @@ const TopBar = () => {
 
   return (
     <header className="app-header">
-      { user ? <p className="nombre-usuario">Hola <span>{user.name}</span></p>: null}    
-      <nav className="nav-principal">
+      { user ? <p className="user-name">Welcome <span>{user.name}</span></p>: null}    
+      <nav className="principal-nav">
         <button 
-          className="btn btn-blank cerrar-sesion"
+          className="btn btn-blank logout"
           onClick={() => logoutFunction()}
         >
           Logout
